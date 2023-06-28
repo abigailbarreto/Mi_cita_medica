@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments or /appointments.json
   def index
     @appointments = Appointment.order(meet_date: :asc)
-                               .where user_id: current_user.id  
+                               .where user_id: current_user.id
   end
 
   # GET /appointments/1 or /appointments/1.json
