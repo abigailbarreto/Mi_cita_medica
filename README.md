@@ -22,3 +22,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Una applicacion para tus citas medicas
+
+Modelo de negocio: *imagen*
+
+Como fue la creacion:
+
+1- Cree un repositorio en github, lo clone en mi local y cree el proyecto en rails donde agregue los archivos docker-compose.yml y Dockerfile con la configuracion deseada, agregue la gemas necesarias en el Gemfile y corri el contenedor, cuando estuvo todo ok pushee. Finalmente cree una rama "abi" para poder continuar con los cambios.
+
+2-  Creacion de User con la gema devise, esto me genera el model y las distintas vistas de logeo de usuario.
+
+3-
