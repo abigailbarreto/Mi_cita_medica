@@ -26,9 +26,9 @@
     <%= form.text_area :meet_motive %>
   </div>
 
-  <div class="field">
+  <div class="controls">
     <%= form.label :Medico %>
-    <%= form.text_field :medico_id %>
+    <%= form.select :medico_id, Medico.all.map{|med| [med.specialty, med.id]} %>
   </div>
 
   <div class="actions">
