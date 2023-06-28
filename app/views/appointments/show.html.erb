@@ -1,34 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Meet date:</strong>
+  <strong>Dia:</strong>
   <%= @appointment.meet_date %>
 </p>
 
 <p>
-  <strong>Meet time:</strong>
+  <strong>Hora:</strong>
   <%= @appointment.meet_time %>
 </p>
 
 <p>
-  <strong>Meet motive:</strong>
+  <strong>Motivo:</strong>
   <%= @appointment.meet_motive %>
 </p>
 
 <p>
-  <strong>Meet state:</strong>
+  <strong>Estado de la cita:</strong>
   <%= @appointment.meet_state %>
 </p>
 
 <p>
   <strong>Medico:</strong>
-  <%= @appointment.medico %>
+  <%= @appointment.medico.name %>
+</p>
+
+<p>
+<strong>Especialidad:</strong>
+  <%= @appointment.medico.specialty %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @appointment.user %>
+  <%= @appointment.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Editar', edit_appointment_path(@appointment) %> |
 <%= link_to 'Back', appointments_path %>
