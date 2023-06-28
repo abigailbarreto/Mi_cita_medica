@@ -3,7 +3,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments or /appointments.json
   def index
-    @appointments = Appointment.where user_id: current_user.id  
+    @appointments = Appointment.order(meet_date: :asc)
+                               .where user_id: current_user.id  
   end
 
   # GET /appointments/1 or /appointments/1.json
@@ -25,7 +26,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to appointment_url(@appointment), notice: "Appointment was successfully created." }
+        format.html { redirect_to appointment_url(@appointment), notice: "Cita Programada" }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class AppointmentsController < ApplicationController
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
-        format.html { redirect_to appointment_url(@appointment), notice: "Appointment was successfully updated." }
+        format.html { redirect_to appointment_url(@appointment), notice: "Cita Actualizada" }
         format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
 
     respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
+      format.html { redirect_to appointments_url, notice: "Cita Cancelada" }
       format.json { head :no_content }
     end
   end
