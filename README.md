@@ -44,4 +44,6 @@ Como fue la creacion:
 
 7-creacion de una carpeta partials con el archivo navigation que contiene un header con los botones de inicio de session cierre de session y crear cuenta, render en home y appointment a partials/navigation.
 
-8-
+8-en create de appointment agregue un current_user y en index busque por id de usuario ordenando de forma ascendente
+
+9-
