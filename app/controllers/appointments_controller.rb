@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments or /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.where user_id: current_user.id  
   end
 
   # GET /appointments/1 or /appointments/1.json
@@ -21,7 +21,7 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments or /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = current_user.appointment.new(appointment_params)
 
     respond_to do |format|
       if @appointment.save
