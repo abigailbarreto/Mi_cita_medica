@@ -40,4 +40,8 @@ Como fue la creacion:
 
 5- Agregue la relacion has_many :appointment en model user; Ademas de validacion para el campo meet_motive en el model de appointment; luego linkee, en cada archivo index de las vistas, las distintas rutas que iba a necesitar; por ultimo en layout/application.html.erb agregar el boton cerrar sesion si el usuario esta logueado.
 
-6-
+6-en home controller agregue skip_before_action :authenticate_user!, only: [:index]
+
+7-creacion de una carpeta partials con el archivo navigation que contiene un header con los botones de inicio de session cierre de session y crear cuenta, render en home y appointment a partials/navigation.
+
+8-
