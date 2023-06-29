@@ -1,32 +1,27 @@
 # README
+Una applicacion para resgistrar tus citas médicas!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+--ISTRUCCIONES PARA CORRER LA APLICACIÓN--
 
-Things you may want to cover:
+Esta aplicacion esta dockerizada por lo tanto solo vas a necesitar tener instalado docker y docker-compose en tu pc, luego:
 
-* Ruby version
+1-En la carpeta donde clonaste el repo vas a abrir una nueva terminal y vas a colocar los siguientes comandos en orden:
+          -docker build 
+          -docker-compose up
 
-* System dependencies
+Listo, tu aplicacion ya esta corriendo, anda a tu navegador web y pone la sig ruta => localhost:3000 
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
-Una applicacion para tus citas medicas
 
-Modelo de negocio: *imagen*
 
-Como fue la creacion:
+
+
+COMO FUE LA CREACIÓN:
 
 1- Cree un repositorio en github, lo clone en mi local y cree el proyecto en rails donde agregue los archivos docker-compose.yml y Dockerfile con la configuracion deseada, agregue la gemas necesarias en el Gemfile y corri el contenedor, cuando estuvo todo ok pushee. Finalmente cree una rama "abi" para poder continuar con los cambios.
 
@@ -44,8 +39,12 @@ Como fue la creacion:
 
 7-creacion de una carpeta partials con el archivo navigation que contiene un header con los botones de inicio de session cierre de session y crear cuenta, render en home y appointment a partials/navigation.
 
-8-en create de appointment agregue un current_user y en index busque por id de usuario ordenando de forma ascendente
+8-en create de appointment agregue un current_user y en index busque por id de usuario ordenando de forma ascendente <= esto sufrio cambios mas adelante
 
-9- 
+9- validaciones para el estado de la cita y la fecha 
 
-10- ultimo paso, asignar una busqueda a 2 variables en el index de appointments, una variable contiene las fechas futuras a la del dia y la otra las fechas pasadas; con estos datos genere en la vista index 2 botones que almacenan estas busquedas y muestran los registros obtenidos. 
+10-selector en el formulario de citas
+
+11- ultimo paso, asignar una busqueda a 2 variables en el index de appointments, una variable contiene las fechas futuras a la del dia y la otra las fechas pasadas; con estos datos genere en la vista index 2 botones que almacenan estas busquedas y muestran los registros obtenidos.
+
+12- validacion de la hora para que solo se pueda elegir en el horario de consulta.
