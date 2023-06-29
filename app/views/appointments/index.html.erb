@@ -3,33 +3,82 @@
 
 <h1>Mis Citas</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Motivo</th>
-      <th>Medico</th>
-      <th>Especialidad</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<button type="button" class="btn btn-primary" id="futureAppointmentsBtn">Proximas Citas</button>
+<button type="button" class="btn btn-primary" id="pastAppointmentsBtn">Citas Pasadas</button>
 
-  <tbody>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.meet_date %></td>
-        <td><%= appointment.meet_time.strftime("%H:%M") %></td>
-        <td><%= appointment.meet_motive %></td>
-        <td><%= appointment.medico.name %></td>
-        <td><%= appointment.medico.specialty %></td>
-        <td><%= link_to 'VER', appointment %></td>
-        <td><%= link_to 'EDITAR', edit_appointment_path(appointment) %></td>
-        <td><%= button_to 'CANCELAR', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- Mostrar citas futuras -->
+<div id="futureAppointmentsDiv" style="display: none;">
+  <h2>Proximas Citas</h2>
+  <% if @future_appointments.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Motivo</th>
+          <th>Doctor</th>
+          <th>Especialidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @future_appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
+            <td><%= appointment.meet_time.strftime("%H:%M") %></td>
+            <td><%= appointment.meet_motive %></td>
+            <td><%= appointment.medico.name %></td>
+            <td><%= appointment.medico.specialty %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No tiene citas programadas.</p>
+  <% end %>
+</div>
 
-<br>
+<!-- Mostrar citas pasadas -->
+<div id="pastAppointmentsDiv" style="display: none;">
+  <h2>Citas Pasadas</h2>
+  <% if @past_appointments.any? %>
+    <table>
+      <thead>
+        <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Motivo</th>
+        <th>Doctor</th>
+        <th>Especialidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @past_appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
+            <td><%= appointment.meet_time.strftime("%H:%M")%></td>
+            <td><%= appointment.meet_motive %></td>
+            <td><%= appointment.medico.name %></td>
+            <td><%= appointment.medico.specialty %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Nunca programo citas :(.</p>
+  <% end %>
+</div>
+
+<script>
+  // Mostrar citas futuras al hacer clic en el botón correspondiente
+  document.getElementById('futureAppointmentsBtn').addEventListener('click', function() {
+    document.getElementById('futureAppointmentsDiv').style.display = 'block';
+    document.getElementById('pastAppointmentsDiv').style.display = 'none';
+  });
+
+  // Mostrar citas pasadas al hacer clic en el botón correspondiente
+  document.getElementById('pastAppointmentsBtn').addEventListener('click', function() {
+    document.getElementById('futureAppointmentsDiv').style.display = 'none';
+    document.getElementById('pastAppointmentsDiv').style.display = 'block';
+  });
+</script>
 <%= link_to 'Atras', root_path %>
