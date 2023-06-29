@@ -7,7 +7,7 @@
 
 <p>
   <strong>Hora:</strong>
-  <%= @appointment.meet_time %>
+  <%= @appointment.meet_time.strftime("%H:%M") %>
 </p>
 
 <p>
@@ -23,11 +23,6 @@
 <p>
 <strong>Especialidad:</strong>
   <%= @appointment.medico.specialty %>
-</p>
-
-<p>
-  <strong>Paciente:</strong>
-  <%= @appointment.user.email %>
 </p>
 
 <%= link_to 'Editar', edit_appointment_path(@appointment) %> |
