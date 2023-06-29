@@ -1,8 +1,18 @@
 <header>
-<% if user_signed_in? %>
-<%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete  %>
-<%else%>
-<%= button_to "Iniciar Sesión", new_user_session_path %>
-<%= link_to "Crea una cuenta", new_user_registration_path%>
-<%end%>
+   <nav class="be-red white">
+        <ul class="no-list row center-xs">
+            <% if user_signed_in? %>
+            <li class="col-md">
+                <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete  %>
+            </li>
+            <%else%>
+            <li class="col-md">
+              <%= button_to "Iniciar Sesión", new_user_session_path %>
+            </li>
+            <li class="col-md">
+              <%= link_to "Crea una cuenta", new_user_registration_path%>
+            </li>
+            <%end%>
+        </ul>
+    </nav>
 <header/>

@@ -11,9 +11,12 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= current_user.email %>
+      <ul class="no-list row center-xs">
+        <li class="col-md">
+          <%= current_user.email %>
+        </li>
+      </ul>
     <% end %>
-
     <%= yield %>
   </body>
 </html>
