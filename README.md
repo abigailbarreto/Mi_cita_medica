@@ -46,4 +46,6 @@ Como fue la creacion:
 
 8-en create de appointment agregue un current_user y en index busque por id de usuario ordenando de forma ascendente
 
-9-
+9- 
+
+10- ultimo paso, asignar una busqueda a 2 variables en el index de appointments, una variable contiene las fechas futuras a la del dia y la otra las fechas pasadas; con estos datos genere en la vista index 2 botones que almacenan estas busquedas y muestran los registros obtenidos. 
