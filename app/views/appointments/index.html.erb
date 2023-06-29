@@ -28,6 +28,9 @@
             <td><%= appointment.meet_motive %></td>
             <td><%= appointment.medico.name %></td>
             <td><%= appointment.medico.specialty %></td>
+            <td><%= link_to 'VER', appointment %></td>
+            <td><%= link_to 'EDITAR', edit_appointment_path(appointment) %></td>
+            <td><%= button_to 'CANCELAR', appointment, method: :delete%></td>
           </tr>
         <% end %>
       </tbody>
@@ -59,6 +62,7 @@
             <td><%= appointment.meet_motive %></td>
             <td><%= appointment.medico.name %></td>
             <td><%= appointment.medico.specialty %></td>
+            <td><%= link_to 'VER', appointment %></td>
           </tr>
         <% end %>
       </tbody>
