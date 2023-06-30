@@ -1,6 +1,6 @@
 <header>
-   <nav class="be-red white">
-        <ul class="no-list row center-xs">
+   <nav class="be-red white large-padding">
+        <ul class="no-list row center-xs around-xs">
             <% if user_signed_in? %>
             <li class="col-md">
                 <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete  %>

@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :Hora %>
-    <%= form.time_select :meet_time %>
+  <%= form.label :meet_time %>
+  <%= form.time_select :meet_time, { start_hour: 8, end_hour: 20, minute_step: 15 } %>
   </div>
 
   <div class="field">

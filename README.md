@@ -1,7 +1,7 @@
 # README
-Una applicacion para resgistrar tus citas médicas!
+Una aplicacion para registrar tus citas médicas!
 
---ISTRUCCIONES PARA CORRER LA APLICACIÓN--
+--INSTRUCCIONES PARA CORRER LA APLICACIÓN--
 
 Esta aplicacion esta dockerizada por lo tanto solo vas a necesitar tener instalado docker y docker-compose en tu pc, luego:
 
