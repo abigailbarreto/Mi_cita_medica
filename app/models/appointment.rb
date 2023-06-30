@@ -11,7 +11,7 @@ class Appointment < ApplicationRecord
   validate :meet_time_validity
   
   def meet_date_validity
-    return if meet_date > Date.today
+    return if meet_date >= Date.today
     errors.add :due_date, 'La fecha no puede ser anterior a la fecha actual'
   end
 
