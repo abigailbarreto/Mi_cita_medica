@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :Fecha %>
-    <%= form.date_select :meet_date %>
+    <%= form.date_field :meet_date, min: Date.today, max: nil %>
   </div>
 
   <div class="field">
