@@ -31,9 +31,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'i18n-tasks', '~> 0.7.4'
 gem 'rails-i18n'
-gem 'bootstrap', '~> 5.1.0'
-gem 'jquery-rails'
-gem 'popper_js'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

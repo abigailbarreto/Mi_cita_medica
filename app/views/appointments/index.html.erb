@@ -1,88 +1,103 @@
-<%= render "partials/navigation"%>
-<p id="notice"><%= notice %></p>
+<%= render "partials/navigation" %>
+<p id="notice" class="alert alert-info"><%= notice %></p>
 
-<h1>Mis Citas</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Mis Citas</h1>
 
-<button type="button" class="btn btn-primary" id="futureAppointmentsBtn">Proximas Citas</button>
-<button type="button" class="btn btn-primary" id="pastAppointmentsBtn">Citas Pasadas</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary active" id="futureAppointmentsBtn">Próximas Citas</button>
+        <button type="button" class="btn btn-primary" id="pastAppointmentsBtn">Citas Pasadas</button>
+      </div>
 
-<!-- Mostrar citas futuras -->
-<div id="futureAppointmentsDiv" style="display: none;">
-  <h2>Proximas Citas</h2>
-  <% if @future_appointments.any? %>
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Motivo</th>
-          <th>Doctor</th>
-          <th>Especialidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @future_appointments.each do |appointment| %>
-          <tr>
-            <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
-            <td><%= appointment.meet_time.strftime("%H:%M") %></td>
-            <td><%= appointment.meet_motive %></td>
-            <td><%= appointment.medico.name %></td>
-            <td><%= appointment.medico.specialty %></td>
-            <td><%= link_to 'VER', appointment %></td>
-            <td><%= link_to 'EDITAR', edit_appointment_path(appointment) %></td>
-            <td><%= button_to 'CANCELAR', appointment, method: :delete%></td>
-          </tr>
+      <!-- Mostrar citas futuras -->
+      <div id="futureAppointmentsDiv">
+        <h2>Próximas Citas</h2>
+        <% if @future_appointments.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
+                <th>Doctor</th>
+                <th>Especialidad</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @future_appointments.each do |appointment| %>
+                <tr>
+                  <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
+                  <td><%= appointment.meet_time.strftime("%H:%M") %></td>
+                  <td><%= appointment.meet_motive %></td>
+                  <td><%= appointment.medico.name %></td>
+                  <td><%= appointment.medico.specialty %></td>
+                  <td><%= link_to 'VER', appointment, class: "btn btn-primary btn-sm" %></td>
+                  <td><%= link_to 'EDITAR', edit_appointment_path(appointment), class: "btn btn-secondary btn-sm" %></td>
+                  <td><%= button_to 'CANCELAR', appointment, method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger btn-sm" %></td>
+
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>No tiene citas programadas.</p>
         <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p>No tiene citas programadas.</p>
-  <% end %>
+      </div>
+
+      <!-- Mostrar citas pasadas -->
+      <div id="pastAppointmentsDiv" style="display: none;">
+        <h2>Citas Pasadas</h2>
+        <% if @past_appointments.any? %>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
+                <th>Doctor</th>
+                <th>Especialidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @past_appointments.each do |appointment| %>
+                <tr>
+                  <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
+                  <td><%= appointment.meet_time.strftime("%H:%M")%></td>
+                  <td><%= appointment.meet_motive %></td>
+                  <td><%= appointment.medico.name %></td>
+                  <td><%= appointment.medico.specialty %></td>
+                  <td><%= link_to 'VER', appointment, class: "btn btn-primary btn-sm" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <p>Nunca programó citas :(.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Mostrar citas pasadas -->
-<div id="pastAppointmentsDiv" style="display: none;">
-  <h2>Citas Pasadas</h2>
-  <% if @past_appointments.any? %>
-    <table>
-      <thead>
-        <tr>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Motivo</th>
-        <th>Doctor</th>
-        <th>Especialidad</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @past_appointments.each do |appointment| %>
-          <tr>
-            <td><%= appointment.meet_date.strftime("%d de %b de %Y") %></td>
-            <td><%= appointment.meet_time.strftime("%H:%M")%></td>
-            <td><%= appointment.meet_motive %></td>
-            <td><%= appointment.medico.name %></td>
-            <td><%= appointment.medico.specialty %></td>
-            <td><%= link_to 'VER', appointment %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p>Nunca programo citas :(.</p>
-  <% end %>
-</div>
+<%= link_to 'Atrás', root_path, class: "btn btn-secondary mt-3" %>
 
 <script>
-  // Mostrar citas futuras al hacer clic en el botón correspondiente
   document.getElementById('futureAppointmentsBtn').addEventListener('click', function() {
+    document.getElementById('futureAppointmentsBtn').classList.add('active');
+    document.getElementById('pastAppointmentsBtn').classList.remove('active');
     document.getElementById('futureAppointmentsDiv').style.display = 'block';
     document.getElementById('pastAppointmentsDiv').style.display = 'none';
   });
 
-  // Mostrar citas pasadas al hacer clic en el botón correspondiente
   document.getElementById('pastAppointmentsBtn').addEventListener('click', function() {
+    document.getElementById('futureAppointmentsBtn').classList.remove('active');
+    document.getElementById('pastAppointmentsBtn').classList.add('active');
     document.getElementById('futureAppointmentsDiv').style.display = 'none';
     document.getElementById('pastAppointmentsDiv').style.display = 'block';
   });
 </script>
-<%= link_to 'Atras', root_path %>

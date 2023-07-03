@@ -1,18 +1,19 @@
 <header>
-   <nav class="be-red white large-padding">
-        <ul class="no-list row center-xs around-xs">
-            <% if user_signed_in? %>
-            <li class="col-md">
-                <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete  %>
-            </li>
-            <%else%>
-            <li class="col-md">
-              <%= button_to "Iniciar Sesión", new_user_session_path %>
-            </li>
-            <li class="col-md">
-              <%= link_to "Crea una cuenta", new_user_registration_path%>
-            </li>
-            <%end%>
-        </ul>
-    </nav>
-<header/>
+  <nav class="navbar navbar-custom">
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "btn btn-light" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= button_to "Iniciar Sesión", new_user_session_path, class: "btn btn-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Crea una cuenta", new_user_registration_path, class: "btn btn-light" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+

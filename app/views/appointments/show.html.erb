@@ -1,29 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-info" role="alert">
+        <%= notice %>
+      </div>
 
-<p>
-  <strong>Dia:</strong>
-  <%= @appointment.meet_date %>
-</p>
+      <h1>Detalles de la Cita</h1>
 
-<p>
-  <strong>Hora:</strong>
-  <%= @appointment.meet_time.strftime("%H:%M") %>
-</p>
+      <table class="table table-bordered">
+        <tr>
+          <th>Día:</th>
+          <td><%= @appointment.meet_date %></td>
+        </tr>
+        <tr>
+          <th>Hora:</th>
+          <td><%= @appointment.meet_time.strftime("%H:%M") %></td>
+        </tr>
+        <tr>
+          <th>Motivo:</th>
+          <td><%= @appointment.meet_motive %></td>
+        </tr>
+        <tr>
+          <th>Médico:</th>
+          <td><%= @appointment.medico.name %></td>
+        </tr>
+        <tr>
+          <th>Especialidad:</th>
+          <td><%= @appointment.medico.specialty %></td>
+        </tr>
+      </table>
 
-<p>
-  <strong>Motivo:</strong>
-  <%= @appointment.meet_motive %>
-</p>
+      <div class="btn-group" role="group" aria-label="Acciones">
+        <%= link_to 'Editar', edit_appointment_path(@appointment), class: "btn btn-primary" %>
+        <%= link_to 'Volver', appointments_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Medico:</strong>
-  <%= @appointment.medico.name %>
-</p>
-
-<p>
-<strong>Especialidad:</strong>
-  <%= @appointment.medico.specialty %>
-</p>
-
-<%= link_to 'Editar', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
