@@ -3,7 +3,9 @@ class Appointment < ApplicationRecord
   belongs_to :user
 
   validates :meet_motive, presence: true
-  
+  validates :meet_date, presence: true
+  validates :meet_time, presence: true
+
   before_create :set_meet_state
   
   validate :validar_unica_hora_fecha_medico

@@ -63,6 +63,4 @@ COMO FUE LA CREACIÓN:
     -un medico no puede tener en el dia 2 citas a la misma hora    
     -un usuario no puede tener en el dia 2 citas a la misma hora
 
-14- Instalacion de las gemas 'bootstrap' 'jquery-rails' 'popper_js'
-
-15-
+14- Generar CSS para las vistas.
