@@ -1,5 +1,11 @@
-<%= render "partials/navigation"%>
-<h1>Programa tu próxima cita con tu médico de confianza!</h1>
-<%= link_to "Nueva Cita", new_appointment_path %>
-<p>O puedes ver tus citas ya programadas</p>
-<%= link_to "Ver mis citas", appointments_path %>
+<%= render "partials/navigation" %>
+
+<div class="container">
+  <h1>Programa tu próxima cita con tu médico de confianza!</h1>
+
+  <%= link_to "Nueva Cita", new_appointment_path, class: "btn btn-primary" %>
+
+  <p>O puedes ver tus citas ya programadas</p>
+  <%= link_to "Ver mis citas", appointments_path, class: "btn btn-secondary" %>
+</div>
+
