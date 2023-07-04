@@ -4,9 +4,11 @@ class AppointmentsController < ApplicationController
   # GET /appointments or /appointments.json
   def index
     @future_appointments = Appointment.where('meet_date >= ?', Date.today)
-                                      .where user_id: current_user.id
+                                      .where(user_id: current_user.id)
+                                      .order(meet_date: :asc)
     @past_appointments = Appointment.where('meet_date < ?', Date.today)
-                                    .where user_id: current_user.id
+                                    .where(user_id: current_user.id)
+                                    .order(meet_date: :desc)
 
   end
 
